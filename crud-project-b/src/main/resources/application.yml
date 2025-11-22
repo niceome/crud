@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydb   # ← host를 'db'로!
+    username: user
+    password: pw
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
