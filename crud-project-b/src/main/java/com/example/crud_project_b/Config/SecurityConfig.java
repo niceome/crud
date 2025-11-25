@@ -21,23 +21,14 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
+                .cors(cors -> cors.disable()) // 필요 시 CORS 설정은 따로
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/user/join", "/user/login", "/css/**", "/js/**").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/user/join", "/user/login").permitAll()
+                        .anyRequest().permitAll()     // 개발 단계에서는 모든 요청 허용 추천
                 )
-                .formLogin((form) -> form
-                        .loginPage("/user/login")
+                .formLogin(form -> form.disable())     // 🔥 formLogin 끄기
+                .httpBasic(basic -> basic.disable());  // 🔥 기본 로그인도 끄기
 
-                        .permitAll()
-                )
-                .userDetailsService(customUserDetailsService)
-                .logout(logout -> logout
-                        .logoutUrl("/logout")  // 이 경로로 POST 요청하면 로그아웃됨
-                        .logoutSuccessUrl("/user/login?logout")
-                        .invalidateHttpSession(true)
-                        .deleteCookies("JSESSIONID")
-                        .permitAll()
-                );
         return http.build();
     }
 

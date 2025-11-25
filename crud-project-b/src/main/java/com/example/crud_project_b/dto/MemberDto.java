@@ -14,4 +14,7 @@ public class MemberDto {
     @NotBlank(message = "비밀번호는 필수")
     private String password;
 
+
+    private String nickname;
+
 }
