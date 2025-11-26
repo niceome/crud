@@ -9,8 +9,7 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private final String secret = "zjfG+Z8tWIUsCO/msd4JhurYiyZ093lgHJ+MMtlAIjh2wxk6SNNOOBPFyg4Qsjyo\n" +
-            "JgAqraOD8Z/BrwKxc2KqMQ==";
+    private final String secret = "zjfG+Z8tWIUsCO/msd4JhurYiyZ093lgHJ+MMtlAIjh2wxk6SNNOOBPFyg4QsjyoJgAqraOD8Z/BrwKxc2KqMQ==";
 
     private final long accessTokenTime = 1000 * 60 * 30;    // 30분
     private final long refreshTokenTime = 1000 * 60 * 60 * 24 * 14;
